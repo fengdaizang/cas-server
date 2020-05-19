@@ -1,0 +1,8 @@
+{
+  "@class": "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId": "^(https|imaps|http)://.*",
+  "name": "fdzang",
+  "id": 1000,
+  "description": "CAS-SSO 登入",
+  "evaluationOrder": 10
+}
