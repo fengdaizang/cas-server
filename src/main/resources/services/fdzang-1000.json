@@ -4,5 +4,6 @@
   "name": "fdzang",
   "id": 1000,
   "description": "CAS-SSO 登入",
-  "evaluationOrder": 10
+  "evaluationOrder": 10,
+  "theme" : "fdzang"
 }
