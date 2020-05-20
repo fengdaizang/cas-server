@@ -1,6 +1,6 @@
 {
   "@class": "org.apereo.cas.services.RegexRegisteredService",
-  "serviceId": "^(https|imaps|http)://.*",
+  "serviceId": "^(https|imaps|http)://app1.cas.com.*",
   "name": "fdzang",
   "id": 1000,
   "description": "CAS-SSO 登入",
