@@ -1,5 +1,7 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   org.apereo.cas.config.CasEmbeddedContainerTomcatConfiguration,\
   org.apereo.cas.config.CasEmbeddedContainerTomcatFiltersConfiguration,\
-  com.fdzang.cas.service.config.SpringConfig
+  com.fdzang.cas.service.config.SpringConfig,\
+  com.fdzang.cas.service.config.RememberMeCaptchaConfiguration,\
+  com.fdzang.cas.service.config.CaptchaWebflowConfiguration
 
