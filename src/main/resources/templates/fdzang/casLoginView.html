@@ -46,47 +46,58 @@
                 <div class="col-lg-6 bg-white">
                     <div class="form d-flex align-items-center">
                         <div class="content">
-                            <form method="post" class="form-validate" id="fm1" th:object="${credential}" action="login">
-                                <div class="form-group">
-                                    <input id="username" type="text" name="username" required
-                                           data-msg="Please enter your username"
-                                           class="input-material" size="25" tabindex="1"
-                                           th:disabled="${guaEnabled}" th:field="*{username}"
-                                           th:accesskey="#{screen.welcome.label.netid.accesskey}" autocomplete="off">
-                                    <label for="username" th:utext="#{screen.welcome.label.netid}"
-                                           class="label-material">User Name</label>
-                                </div>
-                                <div class="form-group">
-                                    <input id="password" type="password" name="password" required
-                                           data-msg="Please enter your password"
-                                           class="input-material" size="25" tabindex="2"
-                                           th:accesskey="#{screen.welcome.label.password.accesskey}"
-                                           th:field="*{password}" autocomplete="off" />
-                                    <label for="password" th:utext="#{screen.welcome.label.password}"
-                                           class="label-material">Password</label>
+                            <form method="post" class="form-horizontal" id="fm1" th:object="${credential}" action="login">
+                                <div class="form-group row">
+                                    <label for="username" class="col-sm-3 form-control-label">用户名</label>
+                                    <div class="col-sm-9">
+                                        <input id="username" type="text" name="username" required
+                                               data-msg="Please enter your username"
+                                               class="form-control form-control-success" size="25" tabindex="1"
+                                               placeholder="用户名"
+                                               th:disabled="${guaEnabled}" th:field="*{username}"
+                                               th:accesskey="#{screen.welcome.label.netid.accesskey}" autocomplete="off">
+                                    </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="captcha">验证码:</label>
-                                    <input class="required" id="captcha" name="captcha" size="10"
-                                           tabindex="2" th:field="*{captcha}" autocomplete="off"/>
-                                    <img th:src="@{/captcha.jpg}" id="captcha_img" onclick="javascript:refreshCaptcha()"/>
+                                <div class="form-group row">
+                                    <label for="password" class="col-sm-3 form-control-label">密码</label>
+                                    <div class="col-sm-9">
+                                        <input id="password" type="password" name="password" required
+                                               data-msg="Please enter your password"
+                                               class="form-control form-control-success" size="25" tabindex="2"
+                                               placeholder="密码"
+                                               th:accesskey="#{screen.welcome.label.password.accesskey}"
+                                               th:field="*{password}" autocomplete="off" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="captcha" class="col-sm-3 form-control-label">验证码</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control form-control-success" id="captcha" name="captcha" size="10"
+                                               placeholder="验证码"
+                                               tabindex="2" th:field="*{captcha}" autocomplete="off"/>
+                                    </div>
+                                    <label class="col-sm-3 form-control-label">
+                                        <img th:src="@{/captcha.jpg}" id="captcha_img" onclick="javascript:refreshCaptcha()"/>
+                                    </label>
                                 </div>
 
-                                <div class="form-group" th:if="${rememberMeAuthenticationEnabled}">
-                                    <input type="checkbox" name="rememberMe" id="rememberMe" value="true" tabindex="5"/>
-                                    <label for="rememberMe" th:text="#{screen.rememberme.checkbox.title}">Remember Me</label>
+                                <div class="form-group row">
+                                    <label for="rememberMe" class="col-sm-3 form-control-label">记住我</label>
+                                    <div class="col-sm-9">
+                                        <input type="checkbox" name="rememberMe" id="rememberMe" value="true" tabindex="5"/>记住我
+                                    </div>
                                 </div>
-
-                                <input type="hidden" name="execution" th:value="${flowExecutionKey}"/>
-                                <input type="hidden" name="_eventId" value="submit"/>
-                                <input type="hidden" name="geolocation"/>
-                                <input id="login" class="btn btn-primary" name="submit" accesskey="l"
-                                       th:value="#{screen.welcome.button.login}" tabindex="6" type="submit"/>
+                                <div class="form-group row">
+                                    <div class="col-sm-9 offset-sm-3">
+                                        <input type="hidden" name="execution" th:value="${flowExecutionKey}"/>
+                                        <input type="hidden" name="_eventId" value="submit"/>
+                                        <input type="hidden" name="geolocation"/>
+                                        <input id="login" class="btn btn-primary" name="submit" accesskey="l"
+                                               th:value="#{screen.welcome.button.login}" tabindex="6" type="submit"/>
+                                    </div>
+                                </div>
                             </form>
-                            <a href="#" class="forgot-pass">忘记密码?</a><br>
-                            <small>还没有账户?</small>
-                            <a href="register.html" class="signup">注册</a>
                         </div>
                     </div>
                 </div>

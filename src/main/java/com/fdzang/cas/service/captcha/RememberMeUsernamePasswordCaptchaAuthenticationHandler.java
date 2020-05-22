@@ -49,12 +49,12 @@ public class RememberMeUsernamePasswordCaptchaAuthenticationHandler extends Abst
         String referer = request.getHeader("referer");
         if(referer.indexOf("service=")>0){
             referer = referer.substring(referer.indexOf("service=")+8);
-            referer.replace("%3A",":");
-            referer.replace("%2F","/");
+            referer = referer.replace("%3A",":");
+            referer = referer.replace("%2F","/");
         }
 
         RegisteredService service = findByServiceId(referer);
-        if (service != null){
+        if (service == null){
             throw new FailedLoginException("未查询到Service错误");
         }
         String appCode = service.getName();
