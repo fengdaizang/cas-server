@@ -35,26 +35,36 @@
             <artifactId>cas-server-support-jdbc-drivers</artifactId>
             <version>${cas.version}</version>
         </dependency>
-<dependency>
-    <groupId>org.apereo.cas</groupId>
-    <artifactId>cas-server-core-authentication</artifactId>
-    <version>${cas.version}</version>
-</dependency>
-<dependency>
-    <groupId>org.apereo.cas</groupId>
-    <artifactId>cas-server-core-authentication-api</artifactId>
-    <version>${cas.version}</version>
-</dependency>
-<dependency>
-    <groupId>org.apereo.cas</groupId>
-    <artifactId>cas-server-core-webflow</artifactId>
-    <version>${cas.version}</version>
-</dependency>
-<dependency>
-    <groupId>org.apereo.cas</groupId>
-    <artifactId>cas-server-core-webflow-api</artifactId>
-    <version>${cas.version}</version>
-</dependency>
+        <dependency>
+            <groupId>org.apereo.cas</groupId>
+            <artifactId>cas-server-core-authentication</artifactId>
+            <version>${cas.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apereo.cas</groupId>
+            <artifactId>cas-server-core-authentication-api</artifactId>
+            <version>${cas.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apereo.cas</groupId>
+            <artifactId>cas-server-core-webflow</artifactId>
+            <version>${cas.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apereo.cas</groupId>
+            <artifactId>cas-server-core-webflow-api</artifactId>
+            <version>${cas.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apereo.cas</groupId>
+            <artifactId>cas-server-support-oidc</artifactId>
+            <version>${cas.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apereo.cas</groupId>
+            <artifactId>cas-server-support-oauth-webflow</artifactId>
+            <version>${cas.version}</version>
+        </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
