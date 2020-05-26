@@ -2,7 +2,7 @@
   "@class" : "org.apereo.cas.support.oauth.services.OAuthRegisteredService",
   "clientId": "abc",
   "clientSecret": "xyz",
-  "serviceId" : "^(https|http|imaps)://app1.cas.com.*",
+  "serviceId" : "^(https|http|imaps)://app2.cas.com.*",
   "name" : "OAuthService",
   "id" : 1001
 }
