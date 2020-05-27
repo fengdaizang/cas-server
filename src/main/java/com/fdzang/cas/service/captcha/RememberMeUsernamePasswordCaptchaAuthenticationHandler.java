@@ -12,8 +12,9 @@ import org.apereo.cas.authentication.handler.support.AbstractPreAndPostProcessin
 import org.apereo.cas.authentication.principal.PrincipalFactory;
 import org.apereo.cas.services.RegisteredService;
 import org.apereo.cas.services.ServicesManager;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
+import org.apereo.cas.web.support.WebUtils;
+import org.springframework.webflow.execution.RequestContext;
+import org.springframework.webflow.execution.RequestContextHolder;
 
 import javax.security.auth.login.FailedLoginException;
 import javax.servlet.http.HttpServletRequest;
@@ -30,8 +31,8 @@ public class RememberMeUsernamePasswordCaptchaAuthenticationHandler extends Abst
 
     @Override
     protected AuthenticationHandlerExecutionResult doAuthentication(Credential credential) throws GeneralSecurityException, PreventedException {
-        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request = attributes.getRequest();
+        RequestContext requestContext = RequestContextHolder.getRequestContext();
+        HttpServletRequest request = WebUtils.getHttpServletRequestFromExternalWebflowContext();
 
         RememberMeUsernamePasswordCaptchaCredential captchaCredential = (RememberMeUsernamePasswordCaptchaCredential) credential;
         String requestCaptcha = captchaCredential.getCaptcha();
@@ -45,18 +46,8 @@ public class RememberMeUsernamePasswordCaptchaAuthenticationHandler extends Abst
             throw new FailedLoginException("验证码错误");
         }
 
-        // 获取请求来源URL
-        String referer = request.getHeader("referer");
-        if(referer.indexOf("service=")>0){
-            referer = referer.substring(referer.indexOf("service=")+8);
-            referer = referer.replace("%3A",":");
-            referer = referer.replace("%2F","/");
-        }
-
-        RegisteredService service = findByServiceId(referer);
-        if (service == null){
-            throw new FailedLoginException("未查询到Service错误");
-        }
+        // 获取Service信息
+        RegisteredService service = WebUtils.getRegisteredService(requestContext);
         String appCode = service.getName();
 
         // 登录校验
@@ -71,17 +62,6 @@ public class RememberMeUsernamePasswordCaptchaAuthenticationHandler extends Abst
     @Override
     public boolean supports(Credential credential) {
         return credential instanceof RememberMeUsernamePasswordCaptchaCredential;
-    }
-
-    public RegisteredService findByServiceId(String serviceId){
-        RegisteredService service = null;
-        try {
-            service = servicesManager.findServiceBy(serviceId);
-        } catch (Exception e) {
-            log.error(e.getMessage());
-        }
-
-        return service;
     }
 
     public void setUserService(UserService userService) {
